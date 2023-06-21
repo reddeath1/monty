@@ -7,7 +7,7 @@
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	(void) line_number_number;
+	(void) line_number;
 
 	if (!temp)
 		return;
@@ -32,7 +32,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (cha == NULL || (_isdigit(cha) != 0 && cha[0] != '-'))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_all();
+		_free();
 		exit(EXIT_FAILURE);
 	}
 	temp = malloc(sizeof(stack_t));
@@ -62,11 +62,11 @@ void _push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _print - Main function that prints last node
+ * print_last - Main function that prints last node
  * @stack: Linked list
  * @line_number: File line execution
  */
-void _print(stack_t **stack, unsigned int line_number)
+void print_last(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)
 	{

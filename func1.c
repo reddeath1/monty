@@ -1,12 +1,11 @@
 #include "monty.h"
 
-
 /**
- * _pchar - Main function that prints character
+ * print_char - Main function that prints character
  * @stack: The double linked list
  * @line_number:  Execution file line
  */
-void _pchar(stack_t **stack, unsigned int line_number)
+void print_char(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{

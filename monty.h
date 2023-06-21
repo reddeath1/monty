@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -71,11 +72,12 @@ instruction_t *instructions();
 int _vars(vars *var);
 int _call(vars *var, char *opcode);
 int _isdigit(char *str);
-
+int isascii(int c);
 void _free(void);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void _pall(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
+void print_last(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
