@@ -7,22 +7,19 @@
  */
 void print_char(stack_t **stack, unsigned int line_number)
 {
-	stack_t *h;
-
-	h = *stack;
-	if (!h)
+	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		_free();
 		exit(EXIT_FAILURE);
 	}
-	if (h->n > 127 || h->n < 0)
+	if (!isASCII((*stack)->n))
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		_free();
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", h->n);
+	printf("%c\n", (*stack)->n);
 }
 
 /**
@@ -44,10 +41,21 @@ void print_str(stack_t **stack, unsigned int line_number)
 	{
 		if (temp->n == 0)
 			break;
-		if ((temp)->n < 127 || (temp)->n < 0)
+		if (!isASCII((*stack)->n))
 			break;
 		putchar(temp->n);
 		temp = temp->next;
 	}
 	putchar('\n');
+}
+
+/**
+ * isASCII - Main function that check if the string or int is int isaxii
+ * @value: argument
+ * Return: always
+ */
+
+int isASCII(int value)
+{
+	return (value >= 0 && value <= 127);
 }
