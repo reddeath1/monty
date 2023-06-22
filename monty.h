@@ -72,7 +72,7 @@ instruction_t *instructions();
 int _vars(vars *var);
 int _call(vars *var, char *opcode);
 int _isdigit(char *str);
-int isascii(int c);
+/* int isascii(int c); */
 void _free(void);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void _pall(stack_t **stack, unsigned int line_number);
