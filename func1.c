@@ -7,20 +7,22 @@
  */
 void print_char(stack_t **stack, unsigned int line_number)
 {
-	if (!stack || !*stack)
+	stack_t *h;
+
+	h = *stack;
+	if (!h)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		_free();
 		exit(EXIT_FAILURE);
 	}
-	if (isascii((*stack)->n))
+	if (h->n > 127 || h->n < 0)
 	{
-		printf("%c\n", (*stack)->n);
-		return;
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		_free();
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
-	_free();
-	exit(EXIT_FAILURE);
+	printf("%c\n", h->n);
 }
 
 /**
@@ -42,7 +44,7 @@ void print_str(stack_t **stack, unsigned int line_number)
 	{
 		if (temp->n == 0)
 			break;
-		if (!isascii((temp)->n))
+		if ((temp)->n < 127 || (temp)->n < 0)
 			break;
 		putchar(temp->n);
 		temp = temp->next;
