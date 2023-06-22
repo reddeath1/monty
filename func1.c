@@ -50,7 +50,7 @@ void print_str(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * isASCII - Main function that check if the string or int is int isaxii
+ * isASCII - Main function that check if the string or int is int isacii
  * @value: argument
  * Return: always
  */
